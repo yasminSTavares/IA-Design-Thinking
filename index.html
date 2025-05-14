@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oficina de Ideia com IA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Oficina de Ideia com IA - Design Thinking</h1>
+    <p class="descricao">Siga as etapas abaixo para estruturar seu projeto com apoio de Inteligência Artificial.</p>
+
+    <div class="etapas">
+      <button onclick="mostrarEtapa(1)">1. Persona</button>
+      <button onclick="mostrarEtapa(2)">2. Motivadores</button>
+      <button onclick="mostrarEtapa(3)">3. Problemas</button>
+      <button onclick="mostrarEtapa(4)">4. Etapas do Projeto</button>
+      <button onclick="mostrarEtapa(5)">5. Visão</button>
+      <button onclick="mostrarEtapa(6)">6. Solução e Impacto</button>
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <textarea id="pergunta" placeholder="Descreva sua ideia ou problema..." rows="4"></textarea>
+    <button onclick="enviarPergunta()">Perguntar para a IA</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
