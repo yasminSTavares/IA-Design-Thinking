@@ -2,38 +2,31 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Design Thinking com IA</title>
-
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
+      margin: 0; padding: 20px;
       background-color: #f3f3f3;
     }
-
     h1 {
       text-align: center;
       color: #333;
     }
-
     .fase {
-      background-color: #fff;
+      background: #fff;
       border-radius: 10px;
       padding: 15px;
       margin: 15px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .fase h2 {
       color: #2c3e50;
     }
-
-    .fase p {
+    .fase p, .fase .explicacao {
       margin: 8px 0;
     }
-
     button {
       margin-top: 10px;
       padding: 8px 15px;
@@ -43,12 +36,49 @@
       color: white;
       cursor: pointer;
     }
-
-    .resposta {
-      margin-top: 10px;
-      background-color: #ecf0f1;
+    .explicacao {
+      background: #ecf0f1;
       padding: 10px;
       border-radius: 5px;
+      margin-top: 10px;
+      white-space: pre-wrap;
+    }
+    .chat {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .chat input {
+      width: calc(100% - 90px);
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .chat button.enviar {
+      width: 70px;
+      margin-left: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #27ae60;
+      color: white;
+      cursor: pointer;
+    }
+    .chat .mensagens {
+      margin-top: 15px;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #ecf0f1;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    .chat button#btnPdf {
+      margin-top: 15px;
+      background: #e67e22;
     }
   </style>
 </head>
@@ -56,89 +86,139 @@
 
   <h1>Design Thinking com IA</h1>
 
-  <!-- Seções fixas -->
   <div class="fase">
     <h2>1. Criação da Persona</h2>
     <p>Quem será beneficiado? Qual o perfil?</p>
-    <button onclick="gerarIdeia('persona')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-persona"></div>
+    <button onclick="mostrarExplicacao('persona')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-persona"></div>
   </div>
 
   <div class="fase">
     <h2>2. Motivadores</h2>
     <p>O que desperta o interesse do grupo?</p>
-    <button onclick="gerarIdeia('motivadores')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-motivadores"></div>
+    <button onclick="mostrarExplicacao('motivadores')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-motivadores"></div>
   </div>
 
   <div class="fase">
     <h2>3. Problemas</h2>
     <p>Quais problemas precisam ser resolvidos?</p>
-    <button onclick="gerarIdeia('problemas')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-problemas"></div>
+    <button onclick="mostrarExplicacao('problemas')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-problemas"></div>
   </div>
 
   <div class="fase">
     <h2>4. Desenvolvimento do Projeto</h2>
     <p>Quais são as etapas necessárias?</p>
-    <button onclick="gerarIdeia('etapas')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-etapas"></div>
+    <button onclick="mostrarExplicacao('etapas')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-etapas"></div>
   </div>
 
   <div class="fase">
     <h2>5. Visão</h2>
     <p>O que mudará com o projeto funcionando?</p>
-    <button onclick="gerarIdeia('visao')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-visao"></div>
+    <button onclick="mostrarExplicacao('visao')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-visao"></div>
   </div>
 
   <div class="fase">
     <h2>6. Solução e Impacto</h2>
     <p>Qual será o impacto e como medi-lo?</p>
-    <button onclick="gerarIdeia('impacto')">Gerar ideia com IA</button>
-    <div class="resposta" id="resposta-impacto"></div>
+    <button onclick="mostrarExplicacao('impacto')">Mostrar explicação</button>
+    <div class="explicacao" id="explicacao-impacto"></div>
   </div>
 
-  <script>
-    function gerarIdeia(tipo) {
-      const respostas = {
-        persona: "Maria, professora de educação infantil, apaixonada por leitura e inclusão.",
-        motivadores: "Desejo de melhorar a comunicação de alunos com deficiência.",
-        problemas: "Dificuldade dos alunos com TEA em se expressar em sala de aula.",
-        etapas: "1. Mapear necessidades. 2. Criar recursos. 3. Testar. 4. Ajustar.",
-        visao: "Maior participação dos alunos e interação com colegas.",
-        impacto: "Mais inclusão e autonomia. Medido por frequência, participação e feedback."
-      };
-      document.getElementById("resposta-" + tipo).textContent = respostas[tipo];
-    }
-  </script>
+  <div class="chat">
+    <h2>Chat de Ideias 💡</h2>
+    <p>Digite suas ideias e comentários para salvar e depois gerar um PDF:</p>
+    <div style="display: flex;">
+      <input type="text" id="inputChat" placeholder="Digite sua ideia aqui..." />
+      <button class="enviar" onclick="enviarMensagem()">Enviar</button>
+    </div>
+    <div class="mensagens" id="mensagensChat"></div>
+    <button id="btnPdf" onclick="gerarPDF()">Gerar PDF com as ideias</button>
+  </div>
 
-  <!-- Script do Chatbase para o chat substituindo o chat antigo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    (function(){
-      if(!window.chatbase||window.chatbase("getState")!=="initialized"){
-        window.chatbase=(...arguments)=>{
-          if(!window.chatbase.q){window.chatbase.q=[]}
-          window.chatbase.q.push(arguments)
-        };
-        window.chatbase=new Proxy(window.chatbase,{
-          get(target,prop){
-            if(prop==="q"){return target.q}
-            return(...args)=>target(prop,...args)
-          }
-        })
+    const explicacoes = {
+      persona: `A criação da persona consiste em definir um perfil representativo do público beneficiado pelo projeto. Isso ajuda a entender suas necessidades, desejos e desafios, garantindo que o projeto seja centrado nas pessoas.`,
+
+      motivadores: `Os motivadores são os fatores que despertam o interesse e o engajamento do grupo envolvido. Compreender esses motivadores é fundamental para alinhar objetivos e manter a motivação durante o desenvolvimento do projeto.`,
+
+      problemas: `Identificar os problemas é essencial para definir o foco do projeto. Nesta fase, analisamos os desafios reais que precisam ser resolvidos para garantir que a solução seja eficaz e relevante.`,
+
+      etapas: `Nesta fase, são definidas as etapas necessárias para desenvolver e implementar o projeto, incluindo planejamento, criação de protótipos, testes e ajustes para garantir o sucesso da iniciativa.`,
+
+      visao: `A visão representa a mudança esperada após a implementação do projeto, descrevendo os benefícios e o impacto positivo na vida das pessoas envolvidas.`,
+
+      impacto: `Avaliar o impacto do projeto é importante para medir seu sucesso e efetividade. Isso pode incluir indicadores qualitativos e quantitativos, além de feedback dos beneficiados para melhorias contínuas.`
+    };
+
+    function mostrarExplicacao(tipo) {
+      const div = document.getElementById(`explicacao-${tipo}`);
+      // Alternar visibilidade
+      if(div.textContent) {
+        div.textContent = "";
+      } else {
+        div.textContent = explicacoes[tipo];
       }
-      const onLoad=function(){
-        const script=document.createElement("script");
-        script.src="https://www.chatbase.co/embed.min.js";
-        script.id="QTSCIuMSispNrt9cLQM2h";
-        script.domain="www.chatbase.co";
-        document.body.appendChild(script)
-      };
-      if(document.readyState==="complete"){onLoad()}
-      else{window.addEventListener("load",onLoad)}
-    })();
-  </script>
+    }
 
+    // Chat e armazenamento local
+    const mensagensKey = 'chatDesignThinkingMensagens';
+
+    function carregarMensagens() {
+      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+      const divMensagens = document.getElementById('mensagensChat');
+      divMensagens.innerHTML = msgs.map(msg => `• ${msg}`).join('\n');
+      divMensagens.scrollTop = divMensagens.scrollHeight;
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById('inputChat');
+      const texto = input.value.trim();
+      if (!texto) return alert('Digite uma ideia antes de enviar!');
+      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+      msgs.push(texto);
+      localStorage.setItem(mensagensKey, JSON.stringify(msgs));
+      input.value = '';
+      carregarMensagens();
+    }
+
+    // Gerar PDF com jsPDF
+    async function gerarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+      if (msgs.length === 0) {
+        alert('Não há ideias para gerar PDF.');
+        return;
+      }
+
+      doc.setFontSize(18);
+      doc.text('Ideias do Chat - Design Thinking', 10, 20);
+      doc.setFontSize(12);
+      let y = 40;
+      msgs.forEach((msg, i) => {
+        const texto = `${i+1}. ${msg}`;
+        // Quebra automática de linha
+        const splitText = doc.splitTextToSize(texto, 180);
+        doc.text(splitText, 10, y);
+        y += splitText.length * 10;
+        if (y > 280) {
+          doc.addPage();
+          y = 20;
+        }
+      });
+
+      doc.save('ideias_design_thinking.pdf');
+    }
+
+    // Inicializa mensagens no carregamento
+    window.onload = carregarMensagens;
+  </script>
 </body>
 </html>
+
