@@ -146,10 +146,19 @@
   <div style="display: flex;">
     <input type="text" id="inputChat" placeholder="Digite sua ideia aqui..." />
     <button class="enviar" onclick="enviarMensagem()">Enviar</button>
-  </div>
   <div class="mensagens" id="mensagensChat"></div>
   <button id="btnPdf" onclick="gerarPDF()">Gerar PDF com as ideias</button>
 </div>
+
+<div>  <input id="inputChat" type="text" placeholder="Digite sua ideia" style="width: 80%; padding: 8px; margin-top: 10px;" />
+<button onclick="enviarMensagem()" style="padding: 8px 12px; margin-left: 5px;">Enviar</button>
+
+<div id="mensagens" style="margin-top: 20px; background: #f9f9f9; border: 1px solid #ddd; padding: 10px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
+  <!-- As mensagens aparecerão aqui -->
+</div> 
+
+<button onclick="gerarPDF()" style="margin-top: 15px; padding: 8px 12px;">📄 Gerar PDF</button>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -237,14 +246,6 @@
 
   window.onload = carregarMensagens;
   
-  <input id="inputChat" type="text" placeholder="Digite sua ideia" style="width: 80%; padding: 8px; margin-top: 10px;" />
-<button onclick="enviarMensagem()" style="padding: 8px 12px; margin-left: 5px;">Enviar</button>
-
-<div id="mensagens" style="margin-top: 20px; background: #f9f9f9; border: 1px solid #ddd; padding: 10px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
-  <!-- As mensagens aparecerão aqui -->
-</div>
-
-<button onclick="gerarPDF()" style="margin-top: 15px; padding: 8px 12px;">📄 Gerar PDF</button>
 
   
 </script>
