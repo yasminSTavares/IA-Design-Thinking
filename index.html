@@ -50,26 +50,6 @@
       padding: 10px;
       border-radius: 5px;
     }
-
-    .chat {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .chat input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .chat .resposta {
-      margin-top: 15px;
-    }
   </style>
 </head>
 <body>
@@ -119,15 +99,6 @@
     <div class="resposta" id="resposta-impacto"></div>
   </div>
 
-  <!-- Nova seção tipo chat -->
-  <div class="chat">
-    <h2>Pergunte algo à IA 💬</h2>
-    <p>Digite uma pergunta sobre Design Thinking ou inovação e receba sugestões com IA:</p>
-    <input type="text" id="inputPergunta" placeholder="Ex: Como posso incentivar a empatia na sala de aula?" />
-    <button onclick="perguntarIA()">Perguntar à IA</button>
-    <div class="resposta" id="respostaPergunta"></div>
-  </div>
-
   <script>
     function gerarIdeia(tipo) {
       const respostas = {
@@ -140,30 +111,33 @@
       };
       document.getElementById("resposta-" + tipo).textContent = respostas[tipo];
     }
+  </script>
 
-    async function perguntarIA() {
-      const pergunta = document.getElementById("inputPergunta").value;
-      const respostaDiv = document.getElementById("respostaPergunta");
-      if (!pergunta.trim()) {
-        respostaDiv.textContent = "Digite uma pergunta antes de enviar.";
-        return;
+  <!-- Script do Chatbase para o chat substituindo o chat antigo -->
+  <script>
+    (function(){
+      if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+        window.chatbase=(...arguments)=>{
+          if(!window.chatbase.q){window.chatbase.q=[]}
+          window.chatbase.q.push(arguments)
+        };
+        window.chatbase=new Proxy(window.chatbase,{
+          get(target,prop){
+            if(prop==="q"){return target.q}
+            return(...args)=>target(prop,...args)
+          }
+        })
       }
-
-      respostaDiv.textContent = "Pensando...";
-
-      try {
-        const response = await fetch("https://ia-design-thinking.onrender.com/api/idea", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: pergunta })
-        });
-
-        const data = await response.json();
-        respostaDiv.innerHTML = `<strong>IA:</strong> ${data.response}`;
-      } catch (error) {
-        respostaDiv.textContent = "Erro ao se conectar com a IA.";
-      }
-    }
+      const onLoad=function(){
+        const script=document.createElement("script");
+        script.src="https://www.chatbase.co/embed.min.js";
+        script.id="QTSCIuMSispNrt9cLQM2h";
+        script.domain="www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if(document.readyState==="complete"){onLoad()}
+      else{window.addEventListener("load",onLoad)}
+    })();
   </script>
 
 </body>
