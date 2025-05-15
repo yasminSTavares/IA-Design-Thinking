@@ -1,3 +1,4 @@
+<!-- CÓDIGO ATUALIZADO A PARTIR DO SEU MODELO -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -24,8 +25,12 @@
     .fase h2 {
       color: #2c3e50;
     }
-    .fase p, .fase .explicacao {
+    .fase p {
       margin: 8px 0;
+      white-space: pre-wrap;
+    }
+    .fase ul {
+      margin-left: 20px;
     }
     button {
       margin-top: 10px;
@@ -35,13 +40,6 @@
       background-color: #3498db;
       color: white;
       cursor: pointer;
-    }
-    .explicacao {
-      background: #ecf0f1;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 10px;
-      white-space: pre-wrap;
     }
     .chat {
       background: #fff;
@@ -84,121 +82,130 @@
 </head>
 <body>
 
-  <h1>Design Thinking com IA</h1>
+<h1>Design Thinking com IA</h1>
 
-  <div class="fase">
-    <h2>1. Criação da Persona</h2>
-    <p> persona: 'Na primeira fase, definimos uma persona, ou seja, um personagem fictício que representa nosso usuário (por exemplo, uma criança com deficiência ou um educador). Essa persona é baseada em dados reais sobre quem é o usuário – idade, necessidades, interesses e motivações – como se fosse um aluno ou professor verdadeiro. Por exemplo, podemos criar a persona “João, 8 anos, que ama jogos de lógica mas sente dificuldade na aula de matemática sem material tátil adaptado”. Criar essa história ajuda a equipe a focar no público real e a desenvolver empatia. Ter uma persona clara faz com que todos na equipe pensem “como essa pessoa vive o dia a dia?” e assim entendam melhor os desafios que ela enfrenta.</p>
+<div class="fase">
+  <h2>1. Criação da Persona</h2>
+  <ul>
+    <li>Persona: personagem fictício baseado em dados reais que representa o usuário.</li>
+    <li>Inclui informações como idade, necessidades, interesses e motivações.</li>
+    <li>Exemplo: João, 8 anos, gosta de jogos de lógica e tem dificuldades com matemática sem material tátil adaptado.</li>
+  </ul>
+</div>
+
+<div class="fase">
+  <h2>2. Motivadores</h2>
+  <ul>
+    <li>Identificação do que motiva a persona: sonhos, preferências, frustrações.</li>
+    <li>Exemplo: João se motiva com atividades práticas e se frustra com cópias do quadro.</li>
+    <li>Esses dados ajudam a criar soluções alinhadas ao que faz sentido para o usuário.</li>
+  </ul>
+</div>
+
+<div class="fase">
+  <h2>3. Problemas</h2>
+  <ul>
+    <li>Identificação clara da barreira enfrentada pela persona.</li>
+    <li>Exemplo: João não participa das aulas por falta de material adaptado.</li>
+    <li>Definir o problema de forma objetiva ajuda a equipe a trabalhar alinhada.</li>
+  </ul>
+</div>
+
+<div class="fase">
+  <h2>4. Desenvolvimento do Projeto</h2>
+  <ul>
+    <li>Ideação coletiva: geração de soluções em grupo (brainstorming).</li>
+    <li>Prototipagem: criação de modelos simples (protótipos).</li>
+    <li>Teste com usuários reais e coleta de feedback.</li>
+    <li>Iteração: refinar soluções com base nas respostas dos usuários.</li>
+  </ul>
+</div>
+
+<div class="fase">
+  <h2>5. Visão</h2>
+  <ul>
+    <li>Projeção de um futuro ideal após a solução do problema.</li>
+    <li>Exemplo: João participando ativamente das aulas com recursos acessíveis.</li>
+    <li>A visão do futuro guia o processo criativo com um objetivo claro.</li>
+  </ul>
+</div>
+
+<div class="fase">
+  <h2>6. Solução e Impacto</h2>
+  <ul>
+    <li>Definição e validação da solução final.</li>
+    <li>Exemplo: software educativo acessível validado com crianças reais.</li>
+    <li>Análise do impacto: melhoria na participação, aprendizagem ou inclusão.</li>
+    <li>Encerramento do ciclo com foco em resultados reais para os usuários.</li>
+  </ul>
+</div>
+
+<div class="chat">
+  <h2>Chat de Ideias 💡</h2>
+  <p>Digite suas ideias e comentários para salvar e depois gerar um PDF:</p>
+  <div style="display: flex;">
+    <input type="text" id="inputChat" placeholder="Digite sua ideia aqui..." />
+    <button class="enviar" onclick="enviarMensagem()">Enviar</button>
   </div>
+  <div class="mensagens" id="mensagensChat"></div>
+  <button id="btnPdf" onclick="gerarPDF()">Gerar PDF com as ideias</button>
+</div>
 
-  <div class="fase">
-    <h2>2. Motivadores</h2>
-    <p>Nesta etapa, analisamos os motivadores da persona – ou seja, o que faz esse personagem funcionar, o que o deixa feliz ou satisfeito. Identificar motivadores é descobrir quais são os sonhos e preferências do usuário. Por exemplo, João pode ficar motivado por atividades práticas e interativas (como jogos físicos) e ficar frustrado quando precisa apenas copiar texto do quadro. É fundamental incluir esses motivadores e frustrações na persona. Saber o que motiva a persona ajuda a equipe a pensar em soluções que realmente façam sentido para ela. Em outras palavras, entendemos o que move nosso usuário para criar soluções criativas alinhadas com seus desejos.` </p>
-  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  const mensagensKey = 'chatDesignThinkingMensagens';
 
-  <div class="fase">
-    <h2>3. Problemas</h2>
-    <p>Depois de conhecer a persona, entramos na fase de identificar o problema real. Aqui definimos claramente qual dificuldade vamos resolver. Perguntamos “Qual é a barreira que essa pessoa enfrenta?”. Por exemplo, percebemos que João não participa bem das aulas porque não existe material adaptado para ele. Definir o problema de forma clara e objetiva garante que toda a equipe entenda o mesmo desafio. Essa clareza é essencial: se todos concordam sobre o problema verdadeiro, fica mais fácil trabalhar juntos e pensar nas melhores soluções criativas.</p>
-  </div>
+  function carregarMensagens() {
+    const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+    const divMensagens = document.getElementById('mensagensChat');
+    divMensagens.innerHTML = msgs.map(msg => `• ${msg}`).join('\n');
+    divMensagens.scrollTop = divMensagens.scrollHeight;
+  }
 
-  <div class="fase">
-    <h2>4. Desenvolvimento do Projeto</h2>
-    <p>Na fase de desenvolvimento, a equipe começa a elaborar e testar ideias. Primeiro fazemos uma ideação coletiva – por exemplo, realizamos um brainstorming para criar várias soluções (jogos de tabuleiro acessíveis, aplicativo educativo, dinâmicas em grupo, etc.). Em seguida, passamos para a prototipagem: construímos modelos simples (protótipos) das melhores ideias (como um protótipo de material pedagógico ou um esboço de atividade adaptada). A etapa de prototipagem serve para transformar ideias em soluções tangíveis e testá-las rapidamente. Após montar o protótipo, testamos com a persona ou com usuários reais semelhantes, observando como interagem. Esse teste inicial dá feedback direto – permitimos que as crianças ou professores experimentem e digam o que gostaram ou não. De acordo com a metodologia, a prototipagem ajuda justamente a testar as soluções e obter retorno dos usuários. É um processo colaborativo e iterativo: com base no feedback, refinamos as ideias, repetimos o teste e melhoramos o projeto antes de seguir adiante.</p>
-  </div>
+  function enviarMensagem() {
+    const input = document.getElementById('inputChat');
+    const texto = input.value.trim();
+    if (!texto) return alert('Digite uma ideia antes de enviar!');
+    const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+    msgs.push(texto);
+    localStorage.setItem(mensagensKey, JSON.stringify(msgs));
+    input.value = '';
+    carregarMensagens();
+  }
 
-  <div class="fase">
-    <h2>5. Visão</h2>
-    <p>Na fase de visão de futuro, projetamos como seria o mundo ideal após resolver o problema. Imaginamos um cenário desejado: qual seria a sala de aula inclusiva perfeita? O que teríamos mudado? Por exemplo, visualizamos João participando ativamente de todas as atividades escolares com recursos acessíveis ao alcance. Nesse ponto, começamos o Design Thinking “com a visão de futuro em mente, ou seja, sabendo qual resultado queremos atingir. Essa visão orienta a criação de soluções criativas: ela nos ajuda a imaginar todas as possibilidades (“e se fizermos deste jeito ou daquele?”) e a alinhar a equipe para um objetivo comum. Manter esse futuro ideal em mente estimula a inovação e garante que cada ideia contribua para o bem-estar final do usuário.</p>
+  async function gerarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
+    if (msgs.length === 0) {
+      alert('Não há ideias para gerar PDF.');
+      return;
+    }
 
-  <div class="fase">
-    <h2>6. Solução e Impacto</h2>
-    <p>`Por fim, chegamos à fase de solução e impacto, onde definimos a proposta final e analisamos seus efeitos reais. Depois de testar e ajustar os protótipos, escolhemos a solução mais promissora para implementar — por exemplo, um conjunto de materiais pedagógicos adaptados ou um software educativo acessível. Validamos a solução reforçando testes ou simulações adicionais: verificamos se ela realmente atende às necessidades da persona e se é viável. Por exemplo, observamos se João consegue agora resolver tarefas de matemática com o novo material e se sente parte das atividades. Essa etapa mostra o impacto concreto da solução: ela deve melhorar a vida das pessoas envolvidas (como maior participação dos alunos, melhor rendimento ou satisfação dos educadores). Em resumo, na fase final solidificamos a solução e medimos seu impacto social ou educacional, fechando o ciclo de forma colaborativa e empática.`</p>
-  </div>
-
-  <div class="chat">
-    <h2>Chat de Ideias 💡</h2>
-    <p>Digite suas ideias e comentários para salvar e depois gerar um PDF:</p>
-    <div style="display: flex;">
-      <input type="text" id="inputChat" placeholder="Digite sua ideia aqui..." />
-      <button class="enviar" onclick="enviarMensagem()">Enviar</button>
-    </div>
-    <div class="mensagens" id="mensagensChat"></div>
-    <button id="btnPdf" onclick="gerarPDF()">Gerar PDF com as ideias</button>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script>
-     
-
-    function mostrarExplicacao(tipo) {
-      const div = document.getElementById(`explicacao-${tipo}`);
-      // Alternar visibilidade
-      if(div.textContent) {
-        div.textContent = "";
-      } else {
-        div.textContent = explicacoes[tipo];
+    doc.setFontSize(18);
+    doc.text('Ideias do Chat - Design Thinking', 10, 20);
+    doc.setFontSize(12);
+    let y = 40;
+    msgs.forEach((msg, i) => {
+      const texto = `${i + 1}. ${msg}`;
+      const splitText = doc.splitTextToSize(texto, 180);
+      doc.text(splitText, 10, y);
+      y += splitText.length * 10;
+      if (y > 280) {
+        doc.addPage();
+        y = 20;
       }
-    }
+    });
 
-    // Chat e armazenamento local
-    const mensagensKey = 'chatDesignThinkingMensagens';
+    doc.save('ideias_design_thinking.pdf');
+  }
 
-    function carregarMensagens() {
-      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
-      const divMensagens = document.getElementById('mensagensChat');
-      divMensagens.innerHTML = msgs.map(msg => `• ${msg}`).join('\n');
-      divMensagens.scrollTop = divMensagens.scrollHeight;
-    }
+  window.onload = carregarMensagens;
+</script>
 
-    function enviarMensagem() {
-      const input = document.getElementById('inputChat');
-      const texto = input.value.trim();
-      if (!texto) return alert('Digite uma ideia antes de enviar!');
-      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
-      msgs.push(texto);
-      localStorage.setItem(mensagensKey, JSON.stringify(msgs));
-      input.value = '';
-      carregarMensagens();
-    }
-
-    // Gerar PDF com jsPDF
-    async function gerarPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      const msgs = JSON.parse(localStorage.getItem(mensagensKey)) || [];
-      if (msgs.length === 0) {
-        alert('Não há ideias para gerar PDF.');
-        return;
-      }
-
-      doc.setFontSize(18);
-      doc.text('Ideias do Chat - Design Thinking', 10, 20);
-      doc.setFontSize(12);
-      let y = 40;
-      msgs.forEach((msg, i) => {
-        const texto = `${i+1}. ${msg}`;
-        // Quebra automática de linha
-        const splitText = doc.splitTextToSize(texto, 180);
-        doc.text(splitText, 10, y);
-        y += splitText.length * 10;
-        if (y > 280) {
-          doc.addPage();
-          y = 20;
-        }
-      });
-
-      doc.save('ideias_design_thinking.pdf');
-    }
-
-    // Inicializa mensagens no carregamento
-    window.onload = carregarMensagens;
-  </script>
-
-  <script>
+<script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="QTSCIuMSispNrt9cLQM2h";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 
-  
 </body>
 </html>
