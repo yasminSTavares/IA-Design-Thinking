@@ -143,15 +143,13 @@
 <div class="chat">
   <h2>Chat de Ideias 💡</h2>
   <p>Digite suas ideias e comentários para salvar e depois gerar um PDF:</p>
+  
   <div style="display: flex;">
     <input type="text" id="inputChat" placeholder="Digite sua ideia aqui..." />
     <button class="enviar" onclick="enviarMensagem()">Enviar</button>
   <div class="mensagens" id="mensagensChat"></div>
-  <button id="btnPdf" onclick="gerarPDF()">Gerar PDF com as ideias</button>
+  
 </div>
-
-<div>  <input id="inputChat" type="text" placeholder="Digite sua ideia" style="width: 80%; padding: 8px; margin-top: 10px;" />
-<button onclick="enviarMensagem()" style="padding: 8px 12px; margin-left: 5px;">Enviar</button>
 
 <div id="mensagens" style="margin-top: 20px; background: #f9f9f9; border: 1px solid #ddd; padding: 10px; border-radius: 8px; max-height: 300px; overflow-y: auto;">
   <!-- As mensagens aparecerão aqui -->
@@ -254,6 +252,18 @@
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="QTSCIuMSispNrt9cLQM2h";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
+
+  <footer style="font-size: 0.9em; color: #555; text-align: center; padding: 10px 0; border-top: 1px solid #ccc; margin-top: 20px;">
+  © 2025 Profª Drª Fabiana Faleiros Castro / EERP-USP<br>
+  Este aplicativo está licenciado sob a 
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: none;">
+    Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional (CC BY-NC-SA 4.0)
+  </a>.<br>
+  Uso livre para fins educacionais não comerciais.<br>
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" alt="Licença Creative Commons" style="border-width:0; margin-top:5px;">
+  </a>
+</footer>
 
 </body>
 </html>
